@@ -1,0 +1,23 @@
+{
+  "name": "express-backend",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "node --env-file=.env -r ts-node/register src/index.ts",
+    "start": "npm run build && node dist/index.js"
+  },
+  "dependencies": {
+    "@beaker-tools/typescript-toolkit": "^1.0.11",
+    "@noble/curves": "^1.4.0",
+    "@radixdlt/babylon-gateway-api-sdk": "^1.6.1",
+    "@radixdlt/radix-engine-toolkit": "^1.0.4",
+    "@radixdlt/rola": "^1.0.2",
+    "express": "^4.19.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.19",
+    "cors": "^2.8.5",
+    "typescript": "^5.4.5"
+  }
+}
