@@ -32,16 +32,17 @@ app.get("/example/getPrice", async (req: Request, res: Response<PriceMessage>, n
         //potentially counterfactual transaction so that a user is not bleeding out 
         //the API. This is up to the DAPP developer.
         const nftId = process.env.ORACLE_NFT_ID
-        const currentNonceResponse = await fetch(process.env.ORACLE_BACKEND_URL+"/nonce/" + nftId)
+        // const currentNonceResponse = await fetch(process.env.ORACLE_BACKEND_URL+"/nonce/" + nftId)
 
-        const nonceJson = await currentNonceResponse.json(); // {nonce: "123"};
+        // const nonceJson = await currentNonceResponse.json(); // {nonce: "123"};
 
         const marketId = "GATEIO:XRD_USDT";
 
-        const signedPriceRequest = await getSignatureOracleRequest(marketId, nonceJson.nonce);
+        // const signedPriceRequest = await getSignatureOracleRequest(marketId, nonceJson.nonce);
+        const signedPriceRequest = await getSignatureOracleRequest(marketId, 0);
 
         console.log(signedPriceRequest)
-        const signedPriceResponse = await fetch(`${process.env.ORACLE_BACKEND_URL}/price/${marketId}/${signedPriceRequest.nonce}/${signedPriceRequest.publicKeyBLS}/${signedPriceRequest.nftId}/${signedPriceRequest.signature}`);
+        const signedPriceResponse = await fetch(`${process.env.ORACLE_BACKEND_URL}/price/${marketId}/${signedPriceRequest.publicKeyBLS}/${signedPriceRequest.nftId}/${signedPriceRequest.signature}`);
         const signedPrice: PriceMessage = await signedPriceResponse.json();
         console.log(signedPrice);
 

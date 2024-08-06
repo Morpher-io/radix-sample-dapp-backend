@@ -9,7 +9,7 @@ export type PriceMessage = {
 
 export type OracleRequestMessage = {
     marketId: string;
-    nonce: number;
+    // nonce: number;
     publicKeyBLS: string;
     nftId: string;
     signature: string;

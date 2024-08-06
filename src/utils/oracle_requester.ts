@@ -17,7 +17,7 @@ export async function getSignatureOracleRequest(marketId: string, nonce: number)
 
   let oracleRequestMsg: OracleRequestMessage = {
     marketId,
-    nonce: Number(nonce) + 1,
+    // nonce: Number(nonce) + 1,
     publicKeyBLS: getPublicKey(pk),
     nftId,
     signature: ""
@@ -42,7 +42,7 @@ export function getDappPublicKey() {
 }
 
 export function oracleRequestMsgToString(msg: OracleRequestMessage) {
-  return msg.marketId + "##" + msg.nonce + "##" + msg.publicKeyBLS + "##" + msg.nftId;
+  return msg.marketId + "##" + msg.publicKeyBLS + "##" + msg.nftId;
 }
 
 // export async function generateSecureRandomBytes(
