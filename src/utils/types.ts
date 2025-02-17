@@ -1,15 +1,9 @@
-export type PricePoint = {
+
+export type PriceMessage = {
     marketId: string;
     price: number;
     nonce: string;
-    dataTimestamp: number;
-    oracleTimestamp: number;
-    marketStatusTimestamp: number;
-    marketStatus: string;
-}
-
-export type PriceMessage = {
-    data: PricePoint[];
+    createdAt: number;
     signature?: string;
 }
 
@@ -19,4 +13,5 @@ export type OracleRequestMessage = {
     publicKeyBLS: string;
     nftId: string;
     signature: string;
-}
+  }
+  
