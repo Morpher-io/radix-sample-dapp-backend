@@ -42,7 +42,7 @@ app.get("/example/getPrice", async (req: Request, res: Response<PriceMessage>, n
         const signedPriceRequest = await getSignatureOracleRequest(marketId, 0);
 
         console.log(signedPriceRequest)
-        const signedPriceResponse = await fetch(`${process.env.ORACLE_BACKEND_URL}/price/${marketId}/${signedPriceRequest.publicKeyBLS}/${signedPriceRequest.nftId}/${signedPriceRequest.signature}`);
+        const signedPriceResponse = await fetch(`${process.env.ORACLE_BACKEND_URL}/v2/price/${marketId}/${signedPriceRequest.publicKeyBLS}/${signedPriceRequest.nftId}/${signedPriceRequest.signature}`);
         const signedPrice: PriceMessage = await signedPriceResponse.json();
         console.log(signedPrice);
 
